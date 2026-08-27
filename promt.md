@@ -1,0 +1,1 @@
+create me a react-tailwind-vite website that follows the description and plan in ./01_phase_1_sell.md. follow the style guide in ./style_guide.md and style_guide.jpg (provided). any questions or concerns about design or contrast/accesability issues, bring up to me for approval.

@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0B6E4F;
+  --color-primary-foreground: #ffffff;
+  
+  --color-secondary: #F4EAD4;
+  --color-secondary-foreground: #1A2E40;
+
+  --color-accent: #FF6B6B;
+  --color-accent-foreground: #ffffff;
+
+  --color-navy: #1A2E40;
+  --color-navy-foreground: #ffffff;
+
+  --color-background: #ffffff;
+  --color-foreground: #1A2E40;
+
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+
+  --color-border: #e2e8f0;
+
+  --font-sans: 'DM Sans', sans-serif;
+  --font-serif: 'Fraunces', serif;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
+@layer base {
+  *, ::before, ::after {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--color-navy);
+  }
+}
+
+@keyframes wave-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-wave {
+  animation: wave-x 20s linear infinite;
+}
+
+.animate-wave-slow {
+  animation: wave-x 30s linear infinite;
+}
