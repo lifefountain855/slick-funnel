@@ -28,7 +28,7 @@ export function Home() {
         
         <div className="container relative z-10 mx-auto px-4 md:px-8 text-center max-w-4xl">
           <h1 className="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6 text-navy">
-            We handle your online presence so you can <span className="text-primary italic">run your business.</span>
+            Your entire online presence.<span className="text-primary italic"> Handled.</span>
           </h1>
           <p className="text-lg md:text-xl mb-10 text-slate-700 max-w-2xl mx-auto">
             SlickFunnel empowers your local business with easy-to-use digital tools that help you get found, capture leads, and convert effortlessly.
@@ -76,7 +76,7 @@ export function Home() {
       {/* CTA Section */}
       <section className="bg-primary text-white py-24 relative overflow-hidden rounded-t-[4rem]">
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center max-w-3xl">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">Ready to see where you stand?</h2>
+          <h2 className="text-accent font-serif text-4xl md:text-5xl font-bold mb-6">Ready to see where you stand?</h2>
           <p className="text-primary-foreground/90 mb-10 text-lg">
             Take our free Digital Growth Audit and discover the exact steps you need to take to generate more leads this month.
           </p>

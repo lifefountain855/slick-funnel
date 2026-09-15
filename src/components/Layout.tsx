@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom"
 import { Button } from "./ui/button"
+import Logo from "./ui/Logo"
 
 export function Layout() {
   return (
@@ -9,7 +10,7 @@ export function Layout() {
           <Link to="/" className="flex items-center space-x-2">
             {/* SlickFunnel Logo SVG / Text */}
             <span className="font-serif text-xl font-bold text-primary flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-funnel"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+              <Logo size={50}/>
               SlickFunnel
             </span>
           </Link>
@@ -37,10 +38,10 @@ export function Layout() {
         <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <span className="font-serif text-xl font-bold flex items-center gap-2">
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-funnel text-primary"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+               <Logo size={50} stroke="#F4EAD4" fill="#F4EAD4"/>
                SlickFunnel
             </span>
-            <p className="text-sm text-slate-300">We handle your online presence so you can run your business.</p>
+            <p className="text-sm text-slate-300">Your entire online presence. Handled.<br/>We handle your online presence so you can run your business.</p>
           </div>
           <div>
             <h4 className="font-serif text-lg mb-4">Services</h4>

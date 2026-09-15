@@ -3,6 +3,7 @@ import { Button } from "../components/ui/button"
 import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
 import { supabase } from "../lib/supabase"
+import { leadSchema } from "../lib/validation"
 
 export function Audit() {
   const [step, setStep] = useState(1)
@@ -16,6 +17,7 @@ export function Audit() {
     phone: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState("")
   const [showResult, setShowResult] = useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,10 +29,13 @@ export function Audit() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Save to Supabase (assuming 'leads' table exists)
+    setSubmitError("")
+
     try {
-      await supabase.from('leads').insert([{
+      leadSchema.parse(formData)
+      const leadId = crypto.randomUUID()
+      const { error: leadError } = await supabase.from('leads').insert([{
+        id: leadId,
         business_name: formData.businessName,
         contact_name: formData.contactName,
         email: formData.email,
@@ -41,8 +46,30 @@ export function Audit() {
         source: 'Free Audit',
         status: 'New',
       }])
+      if (leadError) throw leadError
+
+      const reportId = crypto.randomUUID()
+      const { error: reportError } = await supabase.from('audit_reports').insert([{
+        id: reportId,
+        lead_id: leadId,
+        overall_score: 67,
+        recommendation: 'Focus on SEO & Social',
+      }])
+      if (reportError) throw reportError
+
+      const { error: itemsError } = await supabase.from('audit_items').insert([
+        { audit_report_id: reportId, category: 'Website', score: 82, sort_order: 0 },
+        { audit_report_id: reportId, category: 'Google', score: 64, sort_order: 1 },
+        { audit_report_id: reportId, category: 'SEO', score: 51, sort_order: 2 },
+        { audit_report_id: reportId, category: 'Reviews', score: 72, sort_order: 3 },
+        { audit_report_id: reportId, category: 'Social', score: 43, sort_order: 4 },
+      ])
+      if (itemsError) throw itemsError
     } catch (err) {
-      console.error(err)
+      console.error("Audit submission failed", err)
+      setIsSubmitting(false)
+      setSubmitError("We couldn't generate your audit. Please try again.")
+      return
     }
 
     setTimeout(() => {
@@ -150,6 +177,7 @@ export function Audit() {
                   {isSubmitting ? "Generating Audit..." : "Get My Score"}
                 </Button>
               </div>
+              {submitError && <p role="alert" className="text-sm text-red-600">{submitError}</p>}
             </div>
           )}
         </form>

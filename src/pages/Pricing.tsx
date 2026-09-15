@@ -4,12 +4,22 @@ import { Link } from "react-router-dom"
 export function Pricing() {
   const plans = [
     {
+      name: "Startup",
+      price: "$20-$90",
+      setup: "$100 setup",
+      desc: "For startups who want to find their first few clients.",
+      features: ["Professional website", "Launch products and showcase drops", "Google Business optimization", "Basic SEO", "Managed Hosting", "Open communication channel"],
+      color: "bg-white",
+      buttonVar: "outline",
+      popular: false
+    },
+    {
       name: "Foundation",
       price: "$99",
-      setup: "$750 setup",
+      setup: "$150 setup",
       desc: "Perfect for establishing a professional online presence.",
       features: ["Professional website", "Google Business optimization", "Basic SEO", "Managed Hosting", "Monthly Updates", "Basic Analytics"],
-      color: "bg-[#138e68] text-white", // lighter green bg
+      color: "bg-primary/70 text-white",
       buttonVar: "accent",
       popular: true
     },
@@ -20,19 +30,20 @@ export function Pricing() {
       desc: "For businesses ready to actively generate more leads.",
       features: ["Everything in Foundation", "Local SEO Campaign", "Automated Review System", "Content Marketing", "Lead Tracking", "Monthly Reporting"],
       color: "bg-white text-navy",
-      buttonVar: "outline",
-      popular: false
-    },
-    {
-      name: "Lead Machine",
-      price: "$699+",
-      setup: "$1,000 setup",
-      desc: "A complete automated sales funnel for aggressive growth.",
-      features: ["Everything in Growth", "Lead Automation", "SMS/Email Follow-up", "Booking Integration", "Custom Landing Pages", "Conversion Tracking", "Optional Ad Management"],
-      color: "bg-slate-100 text-slate-500",
       buttonVar: "ghost",
-      unavailable: true
-    }
+      popular: false,
+      unavailable: true,
+    },
+    // {
+    //   name: "Lead Machine",
+    //   price: "$699+",
+    //   setup: "$1,000 setup",
+    //   desc: "A complete automated sales funnel for aggressive growth.",
+    //   features: ["Everything in Growth", "Lead Automation", "SMS/Email Follow-up", "Booking Integration", "Custom Landing Pages", "Conversion Tracking", "Optional Ad Management"],
+    //   color: "bg-slate-100 text-slate-500",
+    //   buttonVar: "ghost",
+    //   unavailable: true
+    // }
   ]
 
   return (

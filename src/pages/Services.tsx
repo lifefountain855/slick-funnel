@@ -43,7 +43,7 @@ export function Services() {
               <p className="text-slate-600 mb-6">Never let a lead slip through the cracks again with our automated follow-up systems.</p>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3 text-slate-700">✅ Automated Email/SMS Follow-ups</li>
-                <li className="flex items-center gap-3 text-slate-700">✅ Simple CRM to Track Pipeline</li>
+                {/* <li className="flex items-center gap-3 text-slate-700">✅ Simple CRM to Track Pipeline</li> */}
                 <li className="flex items-center gap-3 text-slate-700">✅ Appointment Scheduling</li>
               </ul>
             </div>

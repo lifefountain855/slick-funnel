@@ -11,6 +11,15 @@
   --color-accent-foreground: #ffffff;
 
   --color-navy: #1A2E40;
+  --color-navy-100: #e2e8ee;
+  --color-navy-200: #bac8d5;
+  --color-navy-300: #8ea4ba;
+  --color-navy-400: #627d9a;
+  --color-navy-500: #3c5672;
+  --color-navy-600: #1a2e40;
+  --color-navy-700: #132230;
+  --color-navy-800: #0c1620;
+  --color-navy-900: #060b10;
   --color-navy-foreground: #ffffff;
 
   --color-background: #ffffff;
@@ -49,9 +58,22 @@
 }
 
 .animate-wave {
-  animation: wave-x 20s linear infinite;
+  animation: wave-x 10s linear infinite;
 }
 
 .animate-wave-slow {
-  animation: wave-x 30s linear infinite;
+  animation: wave-x 20s linear infinite;
+}
+
+button {
+  @apply cursor-pointer
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: currentColor !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
