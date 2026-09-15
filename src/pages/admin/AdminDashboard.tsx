@@ -4,6 +4,8 @@ import { supabase } from "@/lib/supabase"
 import { X } from "lucide-react"
 import StatusDropdown from "@/components/admin/status-dropdown"
 
+type LeadStatus = "New" | "Contacted" | "Meeting" | "Proposal" | "Won" | "Lost"
+
 type Lead = {
   id: string
   business_name: string
@@ -14,12 +16,12 @@ type Lead = {
   industry: string | null
   city: string | null
   source: string
-  status: string
+  status: LeadStatus
   notes: string | null
   created_at: string
 }
 
-const statuses = {
+const statuses: Record<LeadStatus, { name: LeadStatus; color: string }> = {
   "New": { name: "New", color: "text-sky-300!" },
   "Contacted": { name: "Contacted", color: "text-sky-200!" },
   "Meeting": { name: "Meeting", color: "text-mist-200!" },
@@ -226,7 +228,11 @@ export function AdminDashboard() {
                     ))}
                   </select>
                 </label> */}
-                <StatusDropdown selected={selected} statuses={Object.values(statuses)} updateLead={updateLead}/>
+                <StatusDropdown
+                  selected={selected}
+                  statuses={Object.values(statuses)}
+                  updateLead={(data) => void updateLead({ status: data.status as LeadStatus })}
+                />
 
                 <label className="block text-sm font-medium text-mist-300">
                   Notes
