@@ -6,7 +6,7 @@ import { Pricing } from "./pages/Pricing"
 import { Industries } from "./pages/Industries"
 import { About } from "./pages/About"
 import { Contact } from "./pages/Contact"
-import { Audit } from "./pages/Audit"
+/*import { Audit } from "./pages/Audit"*/
 import { AdminLogin } from "./pages/admin/AdminLogin"
 import { AdminDashboard } from "./pages/admin/AdminDashboard"
 import { ProtectedRoute } from "./components/auth/ProtectedRoute"
