@@ -5,10 +5,10 @@ export function Pricing() {
   const plans = [
     {
       name: "Startup",
-      price: "$20-$90",
-      setup: "$100 setup",
+      price: "$30-$95",
+      setup: "$0 setup!!",
       desc: "For startups who want to find their first few clients.",
-      features: ["Professional website", "Launch products and showcase drops", "Google Business optimization", "Basic SEO", "Managed Hosting", "Open communication channel"],
+      features: ["Professional website", "Google Business optimization", "Meta Ad Campaign", "Managed Hosting"],
       color: "bg-white",
       buttonVar: "outline",
       popular: false
@@ -18,7 +18,7 @@ export function Pricing() {
       price: "$99",
       setup: "$150 setup",
       desc: "Perfect for establishing a professional online presence.",
-      features: ["Professional website", "Google Business optimization", "Basic SEO", "Managed Hosting", "Monthly Updates", "Basic Analytics"],
+      features: ["Everything in Startup", "Basic SEO", "Monthly Updates", "Basic Analytics"],
       color: "bg-primary/70 text-white",
       buttonVar: "accent",
       popular: true
@@ -28,7 +28,7 @@ export function Pricing() {
       price: "$399",
       setup: "$750 setup",
       desc: "For businesses ready to actively generate more leads.",
-      features: ["Everything in Foundation", "Local SEO Campaign", "Automated Review System", "Content Marketing", "Lead Tracking", "Monthly Reporting"],
+      features: ["Everything in Foundation", "Local SEO Campaign", "Content Marketing", "Lead Tracking"],
       color: "bg-white text-navy",
       buttonVar: "ghost",
       popular: false,
@@ -61,9 +61,10 @@ export function Pricing() {
               <h3 className={`font-serif text-2xl font-bold mb-2 ${plan.popular ? 'text-white' : (plan.unavailable ? 'text-slate-400' : 'text-navy')}`}>{plan.name}</h3>
               <p className={`text-sm mb-6 ${plan.popular ? 'text-primary-foreground/90' : (plan.unavailable ? 'text-slate-400' : 'text-slate-500')}`}>{plan.desc}</p>
               <div className="mb-6">
-                <span className="text-4xl font-bold">{plan.price}</span>
+                <span className={`text-4xl font-bold`}>{plan.price}</span>
                 <span className={`text-sm ${plan.popular ? 'text-primary-foreground/90' : (plan.unavailable ? 'text-slate-400' : 'text-slate-500')}`}>/month</span>
-                <div className={`text-sm mt-1 ${plan.popular ? 'text-primary-foreground/90' : (plan.unavailable ? 'text-slate-400' : 'text-slate-500')}`}>+ {plan.setup}</div>
+                {/* {(<div className={`text-sm mt-1 ${plan.popular ? 'text-primary-foreground/90' : (plan.unavailable ? 'text-slate-400' : 'text-slate-500')}`}>+ {plan.setup}</div>)} */}
+                {plan.name=="Startup" ? (<div className={`text-md mt-1 font-bold text-accent`}>{plan.setup}</div>) : (<div className={`text-sm mt-1 ${plan.popular ? 'text-primary-foreground/90' : (plan.unavailable ? 'text-slate-400' : 'text-slate-500')}`}>+ {plan.setup}</div>)}
               </div>
               
               <ul className="space-y-4 mb-8 flex-1">

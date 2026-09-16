@@ -30,7 +30,7 @@ export function Services() {
               <ul className="space-y-3">
                 <li className="flex items-center gap-3 text-slate-700">✅ High-Converting Landing Pages</li>
                 <li className="flex items-center gap-3 text-slate-700">✅ Smart Contact Forms</li>
-                <li className="flex items-center gap-3 text-slate-700">✅ Integrated Booking Systems</li>
+                <li className="flex items-center gap-3 text-slate-700">✅ Meta Ads</li>
               </ul>
             </div>
             <div className="md:w-1/2 bg-primary/10 rounded-2xl aspect-video flex items-center justify-center text-6xl">🎯</div>
