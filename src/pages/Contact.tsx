@@ -61,7 +61,7 @@ export function Contact() {
           <div className="space-y-6">
             <div>
               <h4 className="font-bold text-navy mb-1">Email</h4>
-              <p className="text-slate-600">hello@slickfunnel.com</p>
+              <a href='mailto:contact@slick.asappy.tech' className="font-bold text-primary hover:underline hover:text-accent">contact@slick.asappy.tech</a>
             </div>
             <div>
               <h4 className="font-bold text-navy mb-1">Office Hours</h4>
