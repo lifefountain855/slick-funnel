@@ -3,6 +3,7 @@ import Logo from '../components/ui/Logo'
 export function About() {
   return (
     <div className="py-24 bg-slate-50 min-h-screen">
+      <title>SlickFunnel - About</title>
       <div className="container mx-auto px-4 md:px-8 max-w-3xl">
         <div className="font-serif text-4xl md:text-5xl font-bold text-navy mb-8 text-center flex flex-row items-center justify-center gap-2"><span>About SlickFunnel</span> <span className="absoloute inset-0 r-0"><Logo size={50} fill="#1A2E40" stroke="#1A2E40"/></span></div>
         

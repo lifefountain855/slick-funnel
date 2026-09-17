@@ -1,6 +1,7 @@
 export function Services() {
   return (
     <div className="py-24 bg-slate-50 min-h-screen">
+      <title>SlickFunnel - Services</title>
       <div className="container mx-auto px-4 md:px-8 max-w-5xl">
         <div className="text-center mb-16">
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-navy mb-4">Our Services</h1>

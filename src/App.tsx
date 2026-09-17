@@ -7,6 +7,7 @@ import { Industries } from "./pages/Industries"
 import { About } from "./pages/About"
 import { Contact } from "./pages/Contact"
 /*import { Audit } from "./pages/Audit"*/
+import NotFound from "./pages/NotFound"
 import { AdminLogin } from "./pages/admin/AdminLogin"
 import { AdminDashboard } from "./pages/admin/AdminDashboard"
 import { ProtectedRoute } from "./components/auth/ProtectedRoute"
@@ -17,16 +18,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/industries" element={<Industries />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/audit" element={<Contact />} />
-          {/*<Route path="/audit" element={<Audit />} />*/}
+          <Route path="services" element={<Services />} />
+          <Route path="pricing" element={<Pricing />} />
+          <Route path="industries" element={<Industries />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="audit" element={<Contact />} />
+          {/*<Route path="audit" element={<Audit />} />*/}
+          <Route path="*" element={<NotFound />} />
         </Route>
-      </Routes>
-      <Routes>
+
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/admin" element={<AdminDashboard />} />

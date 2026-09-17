@@ -1,3 +1,4 @@
 #
-- [ ] 404 not found page
-- [ ] page animations
+- [x] 404 not found page
+- [x] page animations
+- [ ] sidebar mobile

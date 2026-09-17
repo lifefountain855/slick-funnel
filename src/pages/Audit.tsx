@@ -81,6 +81,7 @@ export function Audit() {
   if (showResult) {
     return (
       <div className="min-h-screen bg-secondary/30 py-24 px-4">
+        <title>SlickFunnel - Audit</title>
         <div className="max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-slate-100 text-center">
           <h2 className="font-serif text-3xl font-bold text-navy mb-2">Your Digital Presence Score</h2>
           <p className="text-slate-600 mb-12">We've generated an initial assessment for {formData.businessName}</p>

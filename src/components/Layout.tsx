@@ -1,11 +1,46 @@
-import { Link, Outlet } from "react-router-dom"
+import React from 'react'
+import { Link, Outlet, useLocation, useOutlet } from "react-router-dom"
+import { AnimatePresence, motion } from "framer-motion"
 import { Button } from "./ui/button"
 import Logo from "./ui/Logo"
 
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: 12,
+    scale: 0.98,
+    filter: "blur(10px)",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.9,
+      ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier for a snappy enter
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -12,
+    scale: 0.98,
+    filter: "blur(10px)",
+    transition: {
+      duration: 0.25,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+} as const
+
 export function Layout() {
+  const location = useLocation();
+  const outlet = useOutlet()
+  const p = location.pathname
+
   return (
     <div className="flex min-h-screen flex-col font-sans text-foreground">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
           <Link to="/" className="flex items-center space-x-2">
             {/* SlickFunnel Logo SVG / Text */}
@@ -15,11 +50,11 @@ export function Layout() {
             </span>
           </Link>
           <nav className="hidden md:flex gap-6 items-center font-medium">
-            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
-            <Link to="/services" className="hover:text-primary transition-colors">Services</Link>
-            <Link to="/pricing" className="hover:text-primary transition-colors">Pricing</Link>
-            <Link to="/industries" className="hover:text-primary transition-colors">Industries</Link>
-            <Link to="/about" className="hover:text-primary transition-colors">About</Link>
+            <Link to="/" className={`hover:text-primary transition-colors ${p=='/'?'text-primary':''}`}>Home</Link>
+            <Link to="/services" className={`hover:text-primary transition-colors ${p=='/services'?'text-primary':''}`}>Services</Link>
+            <Link to="/pricing" className={`hover:text-primary transition-colors ${p=='/pricing'?'text-primary':''}`}>Pricing</Link>
+            <Link to="/industries" className={`hover:text-primary transition-colors ${p=='/industries'?'text-primary':''}`}>Industries</Link>
+            <Link to="/about" className={`hover:text-primary transition-colors ${p=='/about'?'text-primary':''}`}>About</Link>
           </nav>
           <div className="flex items-center gap-4">
             <Link to="/audit">
@@ -31,7 +66,19 @@ export function Layout() {
       </header>
 
       <main className="flex-1">
-        <Outlet />
+        <AnimatePresence mode="wait">
+          {/* Keying the animated element directly ensures AnimatePresence captures the exit state */}
+          <motion.div
+            key={p}
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="w-full h-full"
+          >
+            {outlet && React.cloneElement(outlet, { key: location.pathname })}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       <footer className="bg-navy text-white py-12">

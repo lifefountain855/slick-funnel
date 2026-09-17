@@ -25,7 +25,7 @@ export default function Logo({size,fill,stroke,stroke_width,outline}:IconProps){
             <path d="M 17.6 2.4 C 15.6 4, 13.6 4, 9.6 2.4 S 3.6 0.8, 1.6 2.4 L 8 9.97 L 8 15.2 L 11.2 16.8 L 11.2 9.97 Z" 
                 fill={ fill ?? "#ffffff00" }
                 stroke={stroke ?? "#0B6E4F" }
-                stroke-width={stroke_width ?? "2"} 
+                strokeWidth={stroke_width ?? "2"} 
                 transform="translate(2.6, 3.8)"
             />
         </svg>

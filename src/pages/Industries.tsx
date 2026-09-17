@@ -15,6 +15,7 @@ export function Industries() {
 
   return (
     <div className="py-24 bg-white min-h-screen">
+      <title>SlickFunnel - Who We Serve</title>
       <div className="container mx-auto px-4 md:px-8 max-w-4xl text-center">
         <h1 className="font-serif text-4xl md:text-5xl font-bold text-navy mb-6">Who We Serve</h1>
         <p className="text-lg text-slate-600 mb-16">
