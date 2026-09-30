@@ -5,23 +5,23 @@ export function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-secondary text-secondary-foreground py-24 md:py-32">
+      <section className="relative flex items-center justify-center overflow-hidden bg-secondary text-secondary-foreground h-screen py-24 md:py-32">
         {/* Beach Vibe Wave Background */}
         <div className="absolute inset-0 z-0 opacity-40 overflow-hidden">
           <div className="absolute bottom-0 w-[200vw] flex animate-wave">
-            <svg viewBox="0 0 1440 320" className="w-[100vw] h-auto flex-shrink-0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <path fill="#0B6E4F" fillOpacity="0.1" d="M0 120 Q360 20 720 120 T1440 120 V320 H0 Z"></path>
+            <svg viewBox="0 0 1440 320" className="w-[300vw] md:w-screen h-auto shrink-0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <path fill="#0B6E4F" fillOpacity="0.2" d="M0 120 Q360 20 720 120 T1440 120 V320 H0 Z"></path>
             </svg>
-            <svg viewBox="0 0 1440 320" className="w-[100vw] h-auto flex-shrink-0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <path fill="#0B6E4F" fillOpacity="0.1" d="M0 120 Q360 20 720 120 T1440 120 V320 H0 Z"></path>
+            <svg viewBox="0 0 1440 320" className="w-[300vw] md:w-screen h-auto shrink-0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <path fill="#0B6E4F" fillOpacity="0.2" d="M0 120 Q360 20 720 120 T1440 120 V320 H0 Z"></path>
             </svg>
           </div>
           <div className="absolute bottom-0 w-[200vw] flex animate-wave-slow">
-            <svg viewBox="0 0 1440 320" className="w-[100vw] h-auto flex-shrink-0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <path fill="#0B6E4F" fillOpacity="0.15" d="M0 180 Q360 100 720 180 T1440 180 V320 H0 Z"></path>
+            <svg viewBox="0 0 1440 320" className="w-[300vw] md:w-screen h-auto shrink-0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <path fill="#0B6E4F" fillOpacity="0.5" d="M0 180 Q360 100 720 180 T1440 180 V320 H0 Z"></path>
             </svg>
-            <svg viewBox="0 0 1440 320" className="w-[100vw] h-auto flex-shrink-0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <path fill="#0B6E4F" fillOpacity="0.15" d="M0 180 Q360 100 720 180 T1440 180 V320 H0 Z"></path>
+            <svg viewBox="0 0 1440 320" className="w-[300vw] md:w-screen h-auto shrink-0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <path fill="#0B6E4F" fillOpacity="0.5" d="M0 180 Q360 100 720 180 T1440 180 V320 H0 Z"></path>
             </svg>
           </div>
         </div>
@@ -35,12 +35,12 @@ export function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/audit">
-              <Button size="lg" variant="accent" className="w-full sm:w-auto shadow-lg hover:-translate-y-1 transition-transform">
-                Get Your Free Online Growth Audit
+              <Button size="lg" variant="accent" className="w-full sm:w-auto font-bold shadow-lg hover:-translate-y-1 transition-transform">
+                Get Your Free Audit
               </Button>
             </Link>
             <Link to="/services">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto border-primary text-primary hover:bg-primary/5">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto font-bold border-primary text-primary hover:bg-primary/5">
                 See How It Works
               </Button>
             </Link>
@@ -62,11 +62,11 @@ export function Home() {
               { title: "Get Leads", desc: "High-converting websites and landing pages that turn casual visitors into quoted requests.", icon: "🌊" },
               { title: "Build Trust", desc: "Automated review generation that builds your 5-star reputation while you sleep.", icon: "☀️" },
             ].map((feature, i) => (
-              <div key={i} className="bg-secondary/20 rounded-[2rem] p-8 border border-secondary/50 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+              <div key={i} className="bg-secondary/20 rounded-4xl p-8 border border-secondary/50 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
                 <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-secondary rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
                 <div className="text-4xl mb-6 relative z-10">{feature.icon}</div>
-                <h3 className="font-serif text-2xl font-bold mb-3 text-navy relative z-10">{feature.title}</h3>
-                <p className="text-slate-700 relative z-10">{feature.desc}</p>
+                <h3 className="font-serif text-3xl font-bold mb-3 text-navy relative z-10">{feature.title}</h3>
+                <p className="text-slate-700 text-lg relative z-10">{feature.desc}</p>
               </div>
             ))}
           </div>

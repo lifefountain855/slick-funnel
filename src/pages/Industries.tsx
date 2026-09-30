@@ -24,7 +24,7 @@ export function Industries() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
           {industries.map((industry, i) => (
-            <div key={i} className="bg-secondary/20 p-6 rounded-2xl border border-secondary/50 font-medium text-navy hover:bg-secondary/40 transition-colors">
+            <div key={i} className="bg-secondary/50 p-6 rounded-2xl border border-navy/15 font-medium text-navy hover:bg-secondary/40 transition-colors">
               {industry}
             </div>
           ))}

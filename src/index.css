@@ -58,7 +58,7 @@
 }
 
 .animate-wave {
-  animation: wave-x 10s linear infinite;
+  animation: wave-x 8s linear infinite;
 }
 
 .animate-wave-slow {

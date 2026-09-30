@@ -172,7 +172,7 @@ export function AdminDashboard() {
                   </span>
                   <p>
                     <a
-                      className="text-[oklch(from_var(--color-primary)_calc(l_*_1.3)_c_h)] hover:text-[oklch(from_var(--color-primary)_calc(l_*_1.6)_c_h)] underline font-medium"
+                      className="text-[oklch(from_var(--color-primary)_calc(l*1.3)_c_h)] hover:text-[oklch(from_var(--color-primary)_calc(l*1.6)_c_h)] underline font-medium"
                       href={`mailto:${selected.email}`}
                     >
                       {selected.email}

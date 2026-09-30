@@ -1,6 +1,7 @@
-import React from 'react'
-import { Link, Outlet, useLocation, useOutlet } from "react-router-dom"
-import { AnimatePresence, motion } from "framer-motion"
+import React, {useState, useEffect} from 'react'
+import { Link, useLocation, useOutlet } from "react-router-dom"
+import { AnimatePresence, motion } from "motion/react"
+import {CircleDollarSign, BriefcaseBusiness, Home, CircleHelp, Info, X, Menu} from 'lucide-react'
 import { Button } from "./ui/button"
 import Logo from "./ui/Logo"
 
@@ -38,6 +39,33 @@ export function Layout() {
   const outlet = useOutlet()
   const p = location.pathname
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMenuOpen(false);
+    };
+
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isMenuOpen]);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const navigationItems = [
+    { label: 'Home', to: '/', icon: Home },
+    { label: 'Services', to: '/services', icon: BriefcaseBusiness },
+    { label: 'Pricing', to: '/pricing', icon: CircleDollarSign },
+    { label: 'About', to: '/about', icon: Info },
+    { label: 'Industries', to: '/industries', icon: CircleHelp },
+  ];
+
   return (
     <div className="flex min-h-screen flex-col font-sans text-foreground">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
@@ -50,33 +78,87 @@ export function Layout() {
             </span>
           </Link>
           <nav className="hidden md:flex gap-6 items-center font-medium">
-            <Link to="/" className={`hover:text-primary transition-colors ${p=='/'?'text-primary':''}`}>Home</Link>
-            <Link to="/services" className={`hover:text-primary transition-colors ${p=='/services'?'text-primary':''}`}>Services</Link>
-            <Link to="/pricing" className={`hover:text-primary transition-colors ${p=='/pricing'?'text-primary':''}`}>Pricing</Link>
-            <Link to="/industries" className={`hover:text-primary transition-colors ${p=='/industries'?'text-primary':''}`}>Industries</Link>
-            <Link to="/about" className={`hover:text-primary transition-colors ${p=='/about'?'text-primary':''}`}>About</Link>
+            {navigationItems.map(({ label, to }) => (
+              <Link key={to} to={to} className={`hover:text-primary transition-colors ${p==to?'text-primary':''}`}>{label}</Link>
+            ))}
           </nav>
           <div className="flex items-center gap-4">
             <Link to="/audit">
               <Button variant="default" className="hidden md:inline-flex">Get Free Audit</Button>
             </Link>
             {/* Mobile menu button could go here */}
+            <button
+              type="button"
+              className={`md:hidden p-2 border border-border-subtle bg-secondary/70 hover:bg-accent/90 hover:text-white transition-colors ${isMenuOpen ? 'relative z-60' : ''}`}
+              aria-label={isMenuOpen ? 'close navigation menu' : 'open navigation menu'}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+              onClick={() => setIsMenuOpen((open) => !open)}
+            >
+              {isMenuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+            </button>
           </div>
         </div>
       </header>
 
       <main className="flex-1">
         <AnimatePresence mode="wait">
-          {/* Keying the animated element directly ensures AnimatePresence captures the exit state */}
-          <motion.div
-            key={p}
-            variants={pageVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="w-full h-full"
-          >
-            {outlet && React.cloneElement(outlet, { key: location.pathname })}
+            {/* Keying the animated element directly ensures AnimatePresence captures the exit state */}
+            <motion.div
+              key={p}
+              variants={pageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="w-full h-full"
+            >
+          <AnimatePresence>
+            {isMenuOpen && (
+              <>
+                <motion.button
+                  type="button"
+                  aria-label="close navigation menu"
+                  className="md:hidden fixed inset-0 z-40 cursor-default bg-black/65 backdrop-blur-sm"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={closeMenu}
+                />
+                <motion.div
+                  id="mobile-navigation"
+                  className="md:hidden fixed right-0 top-0 z-50 h-screen w-[min(88vw,380px)] overflow-y-auto border-l border-border-subtle bg-white px-2 pb-8 pt-10 shadow-2xl"
+                  initial={{ opacity: 0, x: '100%' }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: '100%' }}
+                  transition={{ duration: 0.22, ease: 'easeOut' }}
+                >
+                  <div className="flex flex-col gap-2 mt-1">
+                    {navigationItems.map(({ label, to, icon: Icon }) => (
+                      <Link
+                        key={to}
+                        to={to}
+                        onClick={closeMenu}
+                        className={`relative px-8 flex items-center shadow-sm gap-4 py-4 text-base transition-colors `+(to==p ? 'bg-primary/90 text-white hover:text-white/60' :' hover:text-black/60') }
+                      >
+                        <Icon size={18} aria-hidden="true" />
+                        <span>{label}</span>
+                        {p==to && (<span className='absolute right-8 font-bold text-secondary'>&lt;</span>)}
+                      </Link>
+                    ))}
+                    <div className='h-[5vh] grow'></div>
+                    <Link
+                      to="/portal/login"
+                      onClick={closeMenu}
+                      className="btn-secondary mt-4 flex flex-row justify-center text-sm"
+                    >
+                      <Button variant='accent'>Get Your Free Audit</Button>
+                    </Link>
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>
+            {outlet && React.cloneElement(outlet, { key: p })}
           </motion.div>
         </AnimatePresence>
       </main>
@@ -84,11 +166,12 @@ export function Layout() {
       <footer className="bg-navy text-white py-12">
         <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <span className="font-serif text-xl font-bold flex items-center gap-2">
+            <span className="font-serif text-2xl font-bold flex items-center gap-2">
                <Logo size={50} stroke="#F4EAD4" fill="#F4EAD4"/>
                SlickFunnel
             </span>
-            <p className="text-sm text-slate-300">Your entire online presence. Handled.<br/>We handle your online presence so you can run your business.</p>
+            <p className="italic text-lg text-slate-300">Your entire online presence. Handled.</p>
+            <p className="text-slate-300">We handle your online presence so you can run your business.</p>
           </div>
           <div>
             <h4 className="font-serif text-lg mb-4">Services</h4>
@@ -100,7 +183,7 @@ export function Layout() {
           </div>
           <div>
             <h4 className="font-serif text-lg mb-4">Company</h4>
-            <ul className="space-y-2 text-sm text-slate-300">
+            <ul className="space-y-2 underline text-slate-300">
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/contact">Contact</Link></li>
             </ul>

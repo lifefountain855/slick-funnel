@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom'
 import { Button } from "../components/ui/button"
+// import Email from "../../supabase/edge"
 
 export default function NotFound(){
     return(
@@ -9,6 +10,7 @@ export default function NotFound(){
                 <span className='text-navy-500 text-center text-lg font-bold'>We couldn't find the page you're looking for...</span>
                 <Link to='/'><Button variant='default'>Go Home</Button></Link>
             </div>
+            {/* <Email/> */}
         </div>
     )
 }
