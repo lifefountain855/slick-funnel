@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button"
 import { supabase } from "../lib/supabase"
 import { contactSchema } from "../lib/validation"
 import { useState } from "react"
+import {ArrowDown, ArrowRight} from 'lucide-react'
 
 export function Contact() {
   const [sent,setSent] = useState(JSON.parse(localStorage.getItem("submittedContact")??'false') || false)
@@ -67,6 +68,25 @@ export function Contact() {
             <div>
               <h4 className="font-bold text-navy mb-1">Office Hours</h4>
               <p className="text-slate-600">Mon - Fri, 9am - 5pm EST</p>
+            </div>
+          </div>
+          {/* PROMO */}
+          <div
+            className="md:left-auto md:right-8 md:bottom-8 md:max-w-md w-auto"
+          >
+            <div className="mt-10 bg-primary text-white rounded-lg p-4 shadow-2xl border border-white/10 backdrop-blur-md flex items-center justify-between gap-3">
+              <div className="flex w-full items-center gap-3 min-w-0">
+                <div className="relative min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-semibold uppercase tracking-wider text-secondary">Limited Offer - October Only</span>
+                  </div>
+                  <p className="text-md font-medium w-[80%] text-wrap text-white/90">
+                    Get a 0$ 5-page website!<br/><span className="text-xs/0 tracking-tight italic text-white/60">*for personal or small businesses only.<br/>**in exchange for testimonial and potential referral</span>
+                  </p>
+                  <ArrowDown className='absolute right-4 top-[35%] inline md:hidden'/>
+                  <ArrowRight className='absolute right-4 top-[30%] md:inline hidden'/>
+                </div>
+              </div>
             </div>
           </div>
         </div>
