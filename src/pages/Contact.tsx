@@ -4,7 +4,6 @@ import { Button } from "../components/ui/button"
 import { supabase } from "../lib/supabase"
 import { contactSchema } from "../lib/validation"
 import { useState } from "react"
-import {ArrowDown, ArrowRight} from 'lucide-react'
 
 export function Contact() {
   const [sent,setSent] = useState(JSON.parse(localStorage.getItem("submittedContact")??'false') || false)
@@ -51,13 +50,14 @@ export function Contact() {
 
   return (
     <div className="py-24 bg-white min-h-screen">
-      <title>SlickFunnel - Contact</title>
+      <title>Talk with Kevin | SlickFunnel</title>
       <div className="container mx-auto px-4 md:px-8 max-w-5xl flex flex-col md:flex-row gap-16">
         
         <div className="md:w-1/2">
-          <h1 className="font-serif text-4xl font-bold text-navy mb-6">Let's talk growth.</h1>
-          <p className="text-slate-600 mb-8 text-lg">
-            Have a question about our services or pricing? Want to see if we're a good fit for your specific business? Drop us a line.
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-primary">A good place to start</p>
+          <h1 className="font-serif text-4xl font-bold text-navy mb-6 md:text-5xl">Tell me what’s on your mind.</h1>
+          <p className="text-slate-600 mb-8 text-lg leading-8">
+            I’m Kevin. Share a little about your business and what you’re trying to figure out. I’ll get back to you personally—no pitch, just a conversation.
           </p>
           
           <div className="space-y-6">
@@ -66,33 +66,18 @@ export function Contact() {
               <a href='mailto:contact@slick.asappy.tech' className="font-bold text-primary hover:underline hover:text-accent">contact@slick.asappy.tech</a>
             </div>
             <div>
-              <h4 className="font-bold text-navy mb-1">Office Hours</h4>
-              <p className="text-slate-600">Mon - Fri, 9am - 5pm EST</p>
-            </div>
-          </div>
-          {/* PROMO */}
-          <div
-            className="md:left-auto md:right-8 md:bottom-8 md:max-w-md w-auto"
-          >
-            <div className="mt-10 bg-primary text-white rounded-lg p-4 shadow-2xl border border-white/10 backdrop-blur-md flex items-center justify-between gap-3">
-              <div className="flex w-full items-center gap-3 min-w-0">
-                <div className="relative min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold uppercase tracking-wider text-secondary">Limited Offer - October Only</span>
-                  </div>
-                  <p className="text-md font-medium w-[80%] text-wrap text-white/90">
-                    Get a 0$ 5-page website!<br/><span className="text-xs/0 tracking-tight italic text-white/60">*for personal or small businesses only.<br/>**in exchange for testimonial and potential referral</span>
-                  </p>
-                  <ArrowDown className='absolute right-4 top-[35%] inline md:hidden'/>
-                  <ArrowRight className='absolute right-4 top-[30%] md:inline hidden'/>
-                </div>
-              </div>
+              <h4 className="font-bold text-navy mb-1">What happens next?</h4>
+              <p className="text-slate-600">I’ll read your note and follow up using the contact method you prefer.</p>
             </div>
           </div>
         </div>
 
         <div className="md:w-1/2 bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm">
           {!sent && (<form className="space-y-4" onSubmit={handleSubmit}>
+            <div className="mb-5">
+              <h2 className="font-serif text-2xl font-semibold text-navy">A few details, then we can talk.</h2>
+              <p className="mt-2 text-sm text-slate-600">Share only what you’re comfortable sharing. I’ll take it from here.</p>
+            </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
@@ -136,12 +121,13 @@ export function Contact() {
                 id="message"
                 name="message"
                 className="flex min-h-30 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" 
+                placeholder="What would you like a hand with?"
                 required 
               />
             </div>
 
-            <Button type="submit" disabled={isSubmitting} size="lg" className="w-full bg-primary hover:bg-primary/90 mt-4">
-              {isSubmitting ? "Sending..." : "Send Message"}
+            <Button type="submit" disabled={isSubmitting} size="lg" className="w-full rounded-full bg-primary hover:bg-primary/90 mt-4">
+              {isSubmitting ? "Sending..." : "Send a note to Kevin"}
             </Button>
           </form>)}
             {message && <p role="status" className={`text-${sent ? 'lg' : 'sm'} text-slate-600`}>{message}</p>}

@@ -48,11 +48,11 @@ export function Pricing() {
 
   return (
     <div className="py-24 bg-slate-50 min-h-screen">
-      <title>SlickFunnel - Pricing</title>
+      <title>Simple pricing | SlickFunnel</title>
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <div className="text-center mb-16">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-navy mb-4">Simple, Transparent Pricing</h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">Choose the level of growth that fits your business goals right now.</p>
+          <h1 className="font-serif text-4xl md:text-5xl font-bold text-navy mb-4">Clear options. No pressure.</h1>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">Start with the support that fits your business today. If you’re not sure, Kevin can talk it through with you.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -80,7 +80,7 @@ export function Pricing() {
               <Link to="/audit" className="mt-auto">
                 {/* @ts-ignore */}
                 <Button variant={plan.buttonVar} className={`w-full ${plan.popular ? 'border-none' : ''} ${plan.unavailable ? 'bg-slate-300 text-slate-500' : ''}`} disabled={plan.unavailable}>
-                   {plan.unavailable ? 'Coming Soon' : 'Get Started'}
+                   {plan.unavailable ? 'Coming Soon' : 'Talk it through'}
                 </Button>
               </Link>
             </div>
