@@ -2,12 +2,14 @@
 
 @theme {
   --color-primary: #0B6E4F;
+  --color-primary-dark: #0b3f2f;
   --color-primary-foreground: #ffffff;
   
-  --color-secondary: #F4EAD4;
+  --color-secondary: #f1eadc;
   --color-secondary-foreground: #1A2E40;
 
-  --color-accent: #FF6B6B;
+  --color-accent: #cf705d;
+  --color-accent-hover: #ed917f;
   --color-accent-foreground: #ffffff;
 
   --color-navy: #1A2E40;
@@ -22,7 +24,7 @@
   --color-navy-900: #060b10;
   --color-navy-foreground: #ffffff;
 
-  --color-background: #ffffff;
+  --color-background: #fbf8f1;
   --color-foreground: #1A2E40;
 
   --color-muted: #f1f5f9;
@@ -45,10 +47,16 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
     color: var(--color-navy);
+  }
+
+  ::selection {
+    background: #d9e8d9;
+    color: #1a2e40;
   }
 }
 

@@ -15,13 +15,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     
     // Manual variant classes
     const variants = {
-      default: "bg-(--color-primary) text-white hover:bg-[#095a40]",
-      secondary: "bg-(--color-secondary) text-(--color-secondary-foreground) hover:bg-[#e8dcc3]",
-      accent: "bg-(--color-accent) text-white hover:bg-[#ff5252]",
+      default: "bg-primary text-white hover:bg-[#095a40]",
+      secondary: "bg-secondary text-secondary-foreground hover:bg-[#e8dcc3]",
+      accent: "bg-accent text-white hover:bg-accent-hover",
       outline: "border border-input bg-transparent hover:bg-slate-100",
       ghost: "hover:bg-slate-100",
-      link: "text-(--color-primary) underline-offset-4 hover:underline",
-      admin:"text-(--color-mist-100) border border-input hover:bg-mist-200 hover:text-(--color-mist-900)"
+      link: "text-primary underline-offset-4 hover:underline",
+      admin:"text-mist-100 border border-input hover:bg-mist-200 hover:text-mist-900"
     }
     
     const sizes = {
