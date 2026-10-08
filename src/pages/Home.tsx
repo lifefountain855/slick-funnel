@@ -37,17 +37,17 @@ export function Home() {
           </div>
 
           <div className="relative mx-auto w-full max-w-xl">
-            <div className="absolute -left-5 -top-5 h-28 w-28 rounded-full bg-[#f0c9a8]/60 blur-2xl" />
-            <div className="absolute -bottom-7 -right-5 h-36 w-36 rounded-full bg-[#bdd2bd]/70 blur-2xl" />
-            <div className="relative rounded-4xl bg-[#e9e0d1] p-3 shadow-[0_24px_80px_-35px_rgba(26,46,64,0.4)] md:rotate-1">
+            <div className="absolute -left-5 -top-5 h-28 w-28 rounded-full bg-primary/50 blur-2xl" />
+            <div className="absolute -bottom-7 -right-5 h-36 w-36 rounded-full bg-navy/50 blur-2xl" />
+            <div className="relative rounded-4xl bg-accent/50 p-3 shadow-[0_24px_80px_-35px_rgba(26,46,64,0.4)] md:rotate-1">
               <img
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+                src="kevin-laptop.jpg"
                 alt="Small-business owners sharing ideas around a table"
-                className="aspect-[4/4.3] w-full rounded-[1.55rem] object-cover"
+                className="aspect-3/4 w-full rounded-[1.55rem] object-cover"
               />
-              <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-white/70 bg-white/95 p-4 shadow-lg md:left-8 md:right-8 md:p-5">
+              <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-white/70 bg-secondary/90 p-4 shadow-lg md:left-8 md:right-8 md:p-5">
                 <div className="flex items-start gap-3">
-                  <span className="mt-0.5 rounded-full bg-[#eaf1e8] p-2 text-primary">
+                  <span className="mt-0.5 rounded-full bg-primary p-2 text-white">
                     <MessageCircle size={19} />
                   </span>
                   <div>
@@ -60,7 +60,6 @@ export function Home() {
             <p className="mt-10 text-center text-xs text-slate-500">A good partnership starts with listening.</p>
           </div>
         </div>
-        <div className="pointer-events-none absolute -right-24 top-20 h-80 w-80 rounded-full border border-[#e4dac7] opacity-60" />
       </section>
 
       <section className="border-y border-[#e9e2d5] bg-white/70 px-4 py-7 md:px-8">
@@ -126,8 +125,8 @@ export function Home() {
         <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-8 rounded-4xl bg-primary-dark px-8 py-10 text-white md:flex-row md:items-center md:px-14 md:py-14">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-navy-200">No big pitch. Just a first hello.</p>
-            <h2 className="mt-4 font-mono text-4xl text-white font-semibold leading-tight md:text-5xl">Tell me a little about what you're working on.</h2>
-            <p className="mt-4 text-lg leading-8 text-white/75">I'll listen, ask a few questions, and we can see if there's a way I can help.</p>
+            <h2 className="mt-4 font-mono text-3xl text-white font-semibold leading-tight md:text-5xl">Tell me a little about what you're working on.</h2>
+            <p className="mt-4 text-md md:text-lg leading-8 text-white/75">I'll listen, ask a few questions, and we can see if there's a way I can help.</p>
           </div>
           <Link to="/contact" className="shrink-0">
             <Button size="lg" variant="accent" className="gap-2 rounded-full px-7">

@@ -55,9 +55,9 @@ export function Contact() {
         
         <div className="md:w-1/2">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-primary">A good place to start</p>
-          <h1 className="font-serif text-4xl font-bold text-navy mb-6 md:text-5xl">Tell me what’s on your mind.</h1>
+          <h1 className="font-serif text-4xl font-bold text-navy mb-6 md:text-5xl">Tell me what's on your mind.</h1>
           <p className="text-slate-600 mb-8 text-lg leading-8">
-            I’m Kevin. Share a little about your business and what you’re trying to figure out. I’ll get back to you personally—no pitch, just a conversation.
+            I'm Kevin. Share a little about your business and what you're trying to figure out. I'll get back to you personally—no pitch, just a conversation.
           </p>
           
           <div className="space-y-6">
@@ -67,7 +67,21 @@ export function Contact() {
             </div>
             <div>
               <h4 className="font-bold text-navy mb-1">What happens next?</h4>
-              <p className="text-slate-600">I’ll read your note and follow up using the contact method you prefer.</p>
+              <p className="text-slate-600">I'll read your note and follow up using the contact method you prefer.</p>
+            </div>
+          </div>
+
+          <div className="relative mt-16 mx-auto w-full max-w-xs">
+            <div className="absolute -inset-3 -rotate-3 rounded-3xl bg-accent/50" />
+            <div className="relative overflow-hidden rounded-[1.7rem] bg-[#e8e1d5]">
+              <img
+                src="kevin-headshot.jpg"
+                alt="Small-business team working together around a table"
+                className="aspect-3/4 w-full object-cover"
+              />
+              {/* <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-[#132c24]/80 to-transparent p-6 pt-20">
+                <p className="font-serif text-xl text-white">Good work starts with a good conversation.</p>
+              </div> */}
             </div>
           </div>
         </div>
@@ -76,7 +90,7 @@ export function Contact() {
           {!sent && (<form className="space-y-4" onSubmit={handleSubmit}>
             <div className="mb-5">
               <h2 className="font-serif text-2xl font-semibold text-navy">A few details, then we can talk.</h2>
-              <p className="mt-2 text-sm text-slate-600">Share only what you’re comfortable sharing. I’ll take it from here.</p>
+              <p className="mt-2 text-sm text-slate-600">Share only what you're comfortable sharing. I'll take it from here.</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">

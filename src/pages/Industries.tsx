@@ -31,7 +31,7 @@ export function Industries() {
         </div>
 
         <div className="bg-slate-50 p-12 rounded-3xl border border-slate-100">
-          <h2 className="font-serif text-3xl font-bold text-navy mb-4">Not sure if we’re a fit?</h2>
+          <h2 className="font-serif text-3xl font-bold text-navy mb-4">Not sure if we're a fit?</h2>
           <p className="text-slate-600 mb-8 max-w-xl mx-auto">
             Tell Kevin a little about your business. We can have an honest conversation about what would help.
           </p>

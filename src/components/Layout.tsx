@@ -186,7 +186,7 @@ export function Layout() {
                </div>
             </span>
             <p className="italic text-lg text-slate-300">A real person in your corner.</p>
-            <p className="text-slate-300">Thoughtful online support for the business you’ve built.</p>
+            <p className="text-slate-300">Thoughtful online support for the business you've built.</p>
           </div>
           <div>
             <h4 className="font-serif text-lg text-secondary mb-4">Services</h4>
