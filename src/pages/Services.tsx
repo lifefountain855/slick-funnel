@@ -1,15 +1,16 @@
 import { ArrowRight, Bot, Check, Search, Workflow, Wrench } from "lucide-react"
 import { Link } from "react-router-dom"
 import { Button } from "../components/ui/button"
+import { Seo } from "../components/Seo"
 
 const services = [
   {
     id: "get-found",
     number: "01",
     icon: Search,
-    title: "A better first impression",
-    description: "A clear, welcoming online home that helps the right people find you, understand what you do, and feel good about reaching out.",
-    examples: ["Custom-built websites", "Local search and Google Business Profile", "Useful, easy-to-navigate service pages"],
+    title: "Small-business websites & local visibility",
+    description: "A custom-built, mobile-friendly website and a clearer local-search presence help nearby customers understand what you do and how to reach you.",
+    examples: ["Custom-built small-business websites", "Local search and Google Business Profile support", "Clear, easy-to-navigate service pages"],
     tint: "bg-[#eaf0e8]",
   },
   {
@@ -44,7 +45,32 @@ const services = [
 export function Services() {
   return (
     <div className="min-h-screen bg-background">
-      <title>Hand-built websites, systems & AI help | SlickFunnel</title>
+      <Seo
+        title="Small Business Web Design & Local SEO | SlickFunnel"
+        description="Custom small-business websites, local search support, lead capture, and practical automation for Pembroke Pines and nearby South Florida."
+        path="/services"
+        breadcrumbLabel="Services"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: [
+            "Small-business website design",
+            "Local search optimization",
+            "Lead capture and follow-up",
+            "Workflow automation",
+            "Practical AI systems",
+          ].map((name, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+              "@type": "Service",
+              name,
+              provider: { "@id": "https://slick.asappy.tech/#organization" },
+              areaServed: ["Pembroke Pines", "South Florida"],
+            },
+          })),
+        }}
+      />
       <section className="px-4 pb-14 pt-16 md:px-8 md:pb-20 md:pt-24">
         <div className="mx-auto max-w-6xl">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">How I can help</p>
@@ -54,7 +80,7 @@ export function Services() {
               <span className="block italic text-primary">Made to work for you.</span>
             </h1>
             <p className="max-w-xl text-lg leading-8 text-slate-600">
-              I don't drop a generic package on your desk and disappear. I learn how your business works, hand-build the right pieces, and stay involved as we make them work in real life.
+              I build custom websites and practical online systems for small businesses in Pembroke Pines and nearby South Florida. No generic package dropped on your desk: I learn how your business works, hand-build the right pieces, and stay involved as we make them work in real life.
             </p>
           </div>
         </div>

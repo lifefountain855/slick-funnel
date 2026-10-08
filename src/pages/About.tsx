@@ -1,19 +1,25 @@
 import { ArrowRight, Handshake, Lightbulb, MessageCircle } from "lucide-react"
 import { Link } from "react-router-dom"
 import { Button } from "../components/ui/button"
+import { Seo } from "../components/Seo"
 
 export function About() {
   return (
     <div className="min-h-screen bg-background">
-      <title>About Kevin | SlickFunnel</title>
+      <Seo
+        title="About Kevin at SlickFunnel | Small-Business Website Partner"
+        description="Get to know Kevin, a hands-on digital partner helping small businesses in Pembroke Pines and nearby South Florida with websites and online systems."
+        path="/about"
+        breadcrumbLabel="About Kevin"
+      />
       <section className="px-4 pb-16 pt-16 md:px-8 md:pb-24 md:pt-24">
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.1fr_0.9fr] md:gap-20">
           <div className="relative mx-auto w-full max-w-md">
             <div className="absolute -inset-3 rotate-3 rounded-3xl bg-primary/50" />
             <div className="relative overflow-hidden m-0 md:m-6 rounded-[1.7rem] bg-[#e8e1d5]">
               <img
-                src="kevin-handshake.jpg"
-                alt="Small-business team working together around a table"
+                src="/kevin-handshake.jpg"
+                alt="Kevin greeting a small-business owner"
                 className="aspect-3/4 w-50% object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-[#132c24]/80 to-transparent p-6 pt-20">
@@ -28,7 +34,7 @@ export function About() {
               <span className="mt-2 block italic text-primary">Let's make this feel doable.</span>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-slate-600">
-              I started SlickFunnel to give small-business owners a more human kind of help with their online presence: someone to talk things through with, make a clear plan, and take care of the details together.
+              I started SlickFunnel to give small-business owners in Pembroke Pines and nearby South Florida a more human kind of help with their online presence: someone to talk things through with, make a clear plan, and take care of the details together.
             </p>
             <p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">
               There's no one-size-fits-all package I'm trying to squeeze you into. The right starting point might be a simple website, a better way to follow up, or getting the pieces you already have to work together.

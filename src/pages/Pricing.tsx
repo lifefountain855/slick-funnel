@@ -1,5 +1,6 @@
 import { Button } from "../components/ui/button"
 import { Link } from "react-router-dom"
+import { Seo } from "../components/Seo"
 
 export function Pricing() {
   const plans = [
@@ -48,7 +49,12 @@ export function Pricing() {
 
   return (
     <div className="py-24 bg-slate-50 min-h-screen">
-      <title>Simple pricing | SlickFunnel</title>
+      <Seo
+        title="Small-Business Website & Digital Support Pricing | SlickFunnel"
+        description="Explore SlickFunnel's website and digital support options for small businesses. Start with clear pricing and a no-pressure conversation."
+        path="/pricing"
+        breadcrumbLabel="Pricing"
+      />
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <div className="text-center mb-16">
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-navy mb-4">Clear options. No pressure.</h1>

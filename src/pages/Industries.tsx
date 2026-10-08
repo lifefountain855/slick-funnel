@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { Button } from "../components/ui/button"
+import { Seo } from "../components/Seo"
 
 export function Industries() {
   const industries = [
@@ -15,11 +16,16 @@ export function Industries() {
 
   return (
     <div className="py-24 bg-white min-h-screen">
-      <title>Who Kevin works with | SlickFunnel</title>
+      <Seo
+        title="Website Help for Local Businesses | SlickFunnel"
+        description="Website and online support for home-service and other local small businesses in Pembroke Pines and nearby South Florida."
+        path="/industries"
+        breadcrumbLabel="Industries"
+      />
       <div className="container mx-auto px-4 md:px-8 max-w-4xl text-center">
         <h1 className="font-serif text-4xl md:text-5xl font-bold text-navy mb-6">Good people building local businesses</h1>
         <p className="text-lg text-slate-600 mb-16">
-          I work with hands-on, local businesses who want their online presence to feel as thoughtful and dependable as the work they do.
+          I work with hands-on home-service and other local small businesses in Pembroke Pines and nearby South Florida who want their online presence to feel as thoughtful and dependable as the work they do.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">

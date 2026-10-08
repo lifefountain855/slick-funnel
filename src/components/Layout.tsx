@@ -103,8 +103,9 @@ export function Layout() {
       </header>
 
       <main className="flex-1 relative">
-        <AnimatePresence 
+        <AnimatePresence
           mode="wait" 
+          initial={false}
           onExitComplete={() => {
             // Resets scroll position the moment the previous page finishes exiting
             window.scrollTo(0, 0);
@@ -122,7 +123,7 @@ export function Layout() {
             {outlet && React.cloneElement(outlet, { key: p })}
           </motion.div>
         </AnimatePresence>
-        {createPortal(
+        {typeof document !== "undefined" && createPortal(
           <AnimatePresence>
             {isMenuOpen && (
               <>

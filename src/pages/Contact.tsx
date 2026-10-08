@@ -4,12 +4,33 @@ import { Button } from "../components/ui/button"
 import { Link } from "react-router-dom"
 import { supabase } from "../lib/supabase"
 import { contactSchema } from "../lib/validation"
-import { useState } from "react"
+import { useState, useSyncExternalStore } from "react"
+import { Seo } from "../components/Seo"
+
+function hasPreviouslySubmittedContactForm() {
+  if (typeof window === "undefined") return false
+  const value = localStorage.getItem("submittedContact")
+  return value === "true" || value === JSON.stringify("true")
+}
+
+function subscribeToContactSubmission(onChange: () => void) {
+  window.addEventListener("storage", onChange)
+  return () => window.removeEventListener("storage", onChange)
+}
 
 export function Contact() {
-  const [sent,setSent] = useState(JSON.parse(localStorage.getItem("submittedContact")??'false') || false)
+  const previouslySubmitted = useSyncExternalStore(
+    subscribeToContactSubmission,
+    hasPreviouslySubmittedContactForm,
+    () => false,
+  )
+  const [submittedThisSession, setSubmittedThisSession] = useState(false)
+  const sent = previouslySubmitted || submittedThisSession
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [message, setMessage] = useState(JSON.parse(localStorage.getItem("submittedContact")??'false') ? "You've already submitted this form. Thanks! I will reach out shortly.":"")
+  const [message, setMessage] = useState("")
+  const statusMessage = message || (
+    previouslySubmitted ? "You've already submitted this form. Thanks! I will reach out shortly." : ""
+  )
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -46,12 +67,17 @@ export function Contact() {
     // e.currentTarget.reset()
     setMessage("Thanks for reaching out! We'll be in touch.")
     localStorage.setItem("submittedContact",JSON.stringify('true'))
-    setSent(true)
+    setSubmittedThisSession(true)
   }
 
   return (
     <div className="py-24 bg-white min-h-screen">
-      <title>Talk with Kevin | SlickFunnel</title>
+      <Seo
+        title="Contact SlickFunnel | Website Help for Small Businesses"
+        description="Talk with Kevin about a small-business website, local visibility, or online system in Pembroke Pines and nearby South Florida."
+        path="/contact"
+        breadcrumbLabel="Contact"
+      />
       <div className="container mx-auto px-4 md:px-8 max-w-5xl flex flex-col md:flex-row gap-16">
         
         <div className="md:w-1/2">
@@ -77,8 +103,8 @@ export function Contact() {
             <div className="absolute inset-0 -rotate-3 rounded-3xl bg-accent/50" />
             <div className="relative overflow-hidden rounded-[1.7rem] p-3">
               <img
-                src="kevin-headshot.jpg"
-                alt="Small-business team working together around a table"
+                src="/kevin-headshot.jpg"
+                alt="Kevin, the person behind SlickFunnel"
                 className="aspect-3/4 w-full object-cover rounded-[1.7rem]"
               />
             </div>
@@ -146,7 +172,7 @@ export function Contact() {
               {isSubmitting ? "Sending..." : "Send a note to Kevin"}
             </Button>
           </form>)}
-            {message && <p role="status" className={`text-${sent ? 'lg' : 'sm'} text-slate-600`}>{message}</p>}
+            {statusMessage && <p role="status" className={`text-${sent ? 'lg' : 'sm'} text-slate-600`}>{statusMessage}</p>}
         </div>
 
       </div>

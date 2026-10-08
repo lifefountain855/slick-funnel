@@ -1,11 +1,37 @@
 import { ArrowUpRight, ArrowRight, HeartHandshake, MessageCircle, Sprout } from "lucide-react"
 import { Link } from "react-router-dom"
 import { Button } from "../components/ui/button"
+import { Seo } from "../components/Seo"
 
 export function Home() {
   return (
     <div className="bg-background">
-      <title>Kevin at SlickFunnel | A real partner for your business</title>
+      <Seo
+        title="Small Business Websites in Pembroke Pines, FL | SlickFunnel"
+        description="Small-business websites and practical online support in Pembroke Pines and nearby South Florida. Meet Kevin at SlickFunnel."
+        path="/"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://slick.asappy.tech/#organization",
+          name: "SlickFunnel",
+          alternateName: "Slick Funnel",
+          url: "https://slick.asappy.tech/",
+          logo: "https://slick.asappy.tech/logo.svg",
+          email: "contact@slick.asappy.tech",
+          description: "A hands-on digital partner helping small businesses with websites, local search, lead capture, workflows, and practical AI.",
+          areaServed: [
+            { "@type": "City", name: "Pembroke Pines" },
+            { "@type": "AdministrativeArea", name: "South Florida" },
+          ],
+          contactPoint: {
+            "@type": "ContactPoint",
+            contactType: "customer support",
+            email: "contact@slick.asappy.tech",
+            url: "https://slick.asappy.tech/contact",
+          },
+        }}
+      />
 
       <section className="relative overflow-hidden px-4 pb-20 pt-14 md:px-8 md:pb-28 md:pt-20">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.03fr_0.97fr] lg:gap-16">
@@ -19,7 +45,7 @@ export function Home() {
               <span className="mt-2 block italic text-primary">Your marketing should be, too.</span>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-slate-600 md:text-xl">
-              I'm Kevin. I work alongside small-business owners to make the online side of business feel simpler, more thoughtful, and more like them.
+              I'm Kevin. I build small-business websites and work alongside owners in Pembroke Pines and nearby South Florida to make the online side of business feel simpler, more thoughtful, and more like them.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link to="/contact">
@@ -41,8 +67,8 @@ export function Home() {
             <div className="absolute -bottom-7 -right-5 h-36 w-36 rounded-full bg-navy/50 blur-2xl" />
             <div className="relative rounded-4xl bg-accent/50 p-3 shadow-[0_24px_80px_-35px_rgba(26,46,64,0.4)] md:rotate-1">
               <img
-                src="kevin-laptop.jpg"
-                alt="Small-business owners sharing ideas around a table"
+                src="/kevin-laptop.jpg"
+                alt="Kevin working on a laptop"
                 className="aspect-3/4 w-full rounded-[1.55rem] object-cover"
               />
               <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-white/70 bg-secondary/90 p-4 shadow-lg md:left-8 md:right-8 md:p-5">

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { Seo } from "../components/Seo"
 const legalContent = {
   pageTitle: "Terms of Service & Privacy Policy | SlickFunnel",
   eyebrow: "Legal",
@@ -142,7 +143,13 @@ function renderParagraph(text: string) {
 export function Legal() {
   return (
     <div className="min-h-screen bg-slate-50 px-4 py-16 md:px-8 md:py-24">
-      <title>{legalContent.pageTitle}</title>
+      <Seo
+        title={legalContent.pageTitle}
+        description="SlickFunnel's terms of service and privacy policy."
+        path="/legal"
+        noIndex
+        breadcrumbLabel="Terms and Privacy"
+      />
       <div className="mx-auto max-w-4xl">
         <header className="mb-10">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">{legalContent.eyebrow}</p>
