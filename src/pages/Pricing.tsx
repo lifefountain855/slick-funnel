@@ -28,7 +28,7 @@ export function Pricing() {
       price: "$399",
       setup: "$750 setup",
       desc: "For businesses ready to actively generate more leads.",
-      features: ["Everything in Foundation", "Local SEO Campaign", "Content Marketing", "Lead Tracking"],
+      features: ["Everything in Foundation", "Local SEO Campaign", "Content Marketing", "Content delivery to major platforms", "Lead Tracking"],
       color: "bg-white text-navy",
       buttonVar: "ghost",
       popular: false,
