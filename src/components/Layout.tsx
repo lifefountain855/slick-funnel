@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { createPortal } from "react-dom"
 import { Link, useLocation, useOutlet } from "react-router-dom"
 import { AnimatePresence, motion } from "motion/react"
 import { CircleDollarSign, BriefcaseBusiness, Home, CircleHelp, Info, X, Menu } from 'lucide-react'
@@ -95,7 +96,7 @@ export function Layout() {
               aria-controls="mobile-navigation"
               onClick={() => setIsMenuOpen((open) => !open)}
             >
-              {isMenuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+              <Menu size={22} aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -124,55 +125,69 @@ export function Layout() {
             }}
             className="w-full h-full"
           >
-            <AnimatePresence>
-              {isMenuOpen && (
-                <>
-                  <motion.button
-                    type="button"
-                    aria-label="close navigation menu"
-                    className="md:hidden fixed inset-0 z-40 cursor-default bg-black/65 backdrop-blur-sm"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={closeMenu}
-                  />
-                  <motion.div
-                    id="mobile-navigation"
-                    className="md:hidden fixed right-0 top-0 z-50 h-screen w-[min(88vw,380px)] overflow-y-auto border-l border-border-subtle bg-white px-2 pb-8 pt-10 shadow-2xl"
-                    initial={{ opacity: 0, x: '100%' }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: '100%' }}
-                    transition={{ duration: 0.22, ease: 'easeOut' }}
-                  >
-                    <div className="flex flex-col gap-2 mt-1">
-                      {navigationItems.map(({ label, to, icon: Icon }) => (
-                        <Link
-                          key={to}
-                          to={to}
-                          onClick={closeMenu}
-                          className={`relative px-8 flex items-center shadow-sm gap-4 py-4 text-base transition-colors `+(to==p ? 'bg-primary/90 text-white hover:text-white/60' :' hover:text-black/60') }
-                        >
-                          <Icon size={18} aria-hidden="true" />
-                          <span>{label}</span>
-                          {p==to && (<span className='absolute right-8 font-bold text-secondary'>&lt;</span>)}
-                        </Link>
-                      ))}
-                      <div className='h-[5vh] grow'></div>
-                      <Link
-                        to="/contact"
-                        onClick={closeMenu}
-                        className="mt-4 flex flex-row justify-center text-sm"
-                      >
-                        <Button variant='accent' className="rounded-full">Say hello to Kevin</Button>
-                      </Link>
-                    </div>
-                  </motion.div>
-                </>
-              )}
-            </AnimatePresence>
             {outlet && React.cloneElement(outlet, { key: p })}
           </motion.div>
         </AnimatePresence>
+        {createPortal(
+          <AnimatePresence>
+            {isMenuOpen && (
+              <>
+                <motion.button
+                  type="button"
+                  aria-label="close navigation menu"
+                  className="md:hidden fixed inset-0 z-40 cursor-default bg-black/65 backdrop-blur-sm"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
+                  onClick={closeMenu}
+                />
+                <motion.div
+                  id="mobile-navigation"
+                  className="md:hidden fixed right-0 top-0 z-50 h-screen w-[min(88vw,380px)] overflow-y-auto border-l border-border-subtle bg-white px-2 pb-8 pt-10 shadow-2xl"
+                  initial={{ opacity: 0, x: '100%' }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: '100%' }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                >
+                  <div className="flex justify-end">
+                    <button
+                      type="button"
+                      aria-label="close navigation menu"
+                      onClick={closeMenu}
+                      className="p-2 mr-2 -mt-6 border border-border-subtle bg-secondary/70 hover:bg-accent/90 hover:text-white transition-colors"
+                    >
+                        <X size={22} aria-hidden="true" />
+                    </button>
+                  </div>
+                  <div className="flex flex-col gap-2 mt-16">
+                    {navigationItems.map(({ label, to, icon: Icon }) => (
+                      <Link
+                        key={to}
+                        to={to}
+                        onClick={closeMenu}
+                        className={`relative px-8 flex items-center shadow-sm gap-4 py-4 text-base transition-colors `+(to==p ? 'bg-primary/90 text-white hover:text-white/60' :' hover:text-black/60') }
+                      >
+                        <Icon size={18} aria-hidden="true" />
+                        <span>{label}</span>
+                        {p==to && (<span className='absolute right-8 font-bold text-secondary'>&lt;</span>)}
+                      </Link>
+                    ))}
+                    <div className='h-[5vh] grow'></div>
+                    <Link
+                      to="/contact"
+                      onClick={closeMenu}
+                      className="mt-4 flex flex-row justify-center text-sm"
+                    >
+                      <Button variant='accent' className="rounded-full">Say hello to Kevin</Button>
+                    </Link>
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
       </main>
 
       <footer className="bg-navy text-white py-12">

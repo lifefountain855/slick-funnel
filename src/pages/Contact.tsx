@@ -8,7 +8,7 @@ import { useState } from "react"
 export function Contact() {
   const [sent,setSent] = useState(JSON.parse(localStorage.getItem("submittedContact")??'false') || false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [message, setMessage] = useState(JSON.parse(localStorage.getItem("submittedContact")??'false') ? "You've already submitted this form. Thanks! We will reach out shortly.":"")
+  const [message, setMessage] = useState(JSON.parse(localStorage.getItem("submittedContact")??'false') ? "You've already submitted this form. Thanks! I will reach out shortly.":"")
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -71,17 +71,15 @@ export function Contact() {
             </div>
           </div>
 
+          {/* Image */}
           <div className="relative mt-16 mx-auto w-full max-w-xs">
-            <div className="absolute -inset-3 -rotate-3 rounded-3xl bg-accent/50" />
-            <div className="relative overflow-hidden rounded-[1.7rem] bg-[#e8e1d5]">
+            <div className="absolute inset-0 -rotate-3 rounded-3xl bg-accent/50" />
+            <div className="relative overflow-hidden rounded-[1.7rem] p-3">
               <img
                 src="kevin-headshot.jpg"
                 alt="Small-business team working together around a table"
-                className="aspect-3/4 w-full object-cover"
+                className="aspect-3/4 w-full object-cover rounded-[1.7rem]"
               />
-              {/* <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-[#132c24]/80 to-transparent p-6 pt-20">
-                <p className="font-serif text-xl text-white">Good work starts with a good conversation.</p>
-              </div> */}
             </div>
           </div>
         </div>
