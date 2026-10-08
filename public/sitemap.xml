@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://slick.asappy.tech/</loc>
-  </url>
-  <url>
-    <loc>https://slick.asappy.tech/services</loc>
-  </url>
-  <url>
-    <loc>https://slick.asappy.tech/pricing</loc>
-  </url>
-  <url>
-    <loc>https://slick.asappy.tech/industries</loc>
-  </url>
-  <url>
-    <loc>https://slick.asappy.tech/about</loc>
-  </url>
-  <url>
-    <loc>https://slick.asappy.tech/contact</loc>
-  </url>
+  <url><loc>https://slick.asappy.tech/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/services/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/services/web-design/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/services/seo/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/industries/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/pricing/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/about/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/contact/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/resources/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/resources/guides/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/resources/guides/local-search-checklist/</loc><lastmod>2026-10-08</lastmod></url>
+  <url><loc>https://slick.asappy.tech/resources/guides/ai-search-readiness/</loc><lastmod>2026-10-08</lastmod></url>
 </urlset>

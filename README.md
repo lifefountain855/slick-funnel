@@ -4,9 +4,11 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 ## SEO-ready production output
 
-`npm run build` type-checks the app, builds the Vite assets, and pre-renders the public routes listed in `scripts/prerender.mjs` into `dist/`. Deploy the full `dist/` directory and configure the host to serve generated route files before applying any SPA fallback. The pre-render step checks route metadata, structured data, crawler directives, and sitemap consistency.
+`npm run build` type-checks the app, builds the Vite assets, and pre-renders the routes in `src/seo/site.ts` into `dist/`. That route manifest supplies canonical URLs, page metadata, indexability, and meaningful content-modified dates to the router, prerenderer, and generated XML sitemap. Deploy the complete `dist/` directory.
 
-Page metadata is defined alongside each page with `src/components/Seo.tsx`. If the production domain or indexable routes change, update that metadata, `index.html`, `public/robots.txt`, `public/sitemap.xml`, and the pre-render route checks together.
+The project includes `public/_redirects` rules for the previous no-trailing-slash URLs, the former `.html` aliases, `/audit`, the client-routed admin area, and unknown paths. This file format is supported by Netlify and Cloudflare Pages; on another host, configure equivalent permanent redirects, keep `/admin/*` routed to the app shell, and serve `404.html` with an actual 404 status before the SPA fallback. Do not send missing URLs to the homepage with a success status.
+
+`public/robots.txt` advertises `https://slick.asappy.tech/sitemap.xml`, permits OAI-SearchBot, and disallows admin routes. Keep business identity, service coverage, email, and page claims consistent with visible site content. Do not add location/industry pages, reviews, schema, or results claims without real supporting information.
 
 Currently, two official plugins are available:
 

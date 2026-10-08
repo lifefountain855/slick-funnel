@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { createPortal } from "react-dom"
 import { Link, useLocation, useOutlet } from "react-router-dom"
 import { AnimatePresence, motion } from "motion/react"
-import { CircleDollarSign, BriefcaseBusiness, Home, CircleHelp, Info, X, Menu } from 'lucide-react'
+import { CircleDollarSign, BriefcaseBusiness, Home, CircleHelp, Info, X, Menu, BookOpenText } from 'lucide-react'
 import { Button } from "./ui/button"
 import Logo from "./ui/Logo"
 
@@ -61,10 +61,11 @@ export function Layout() {
 
   const navigationItems = [
     { label: 'Home', to: '/', icon: Home },
-    { label: 'Services', to: '/services', icon: BriefcaseBusiness },
-    { label: 'Pricing', to: '/pricing', icon: CircleDollarSign },
-    { label: 'About', to: '/about', icon: Info },
-    { label: 'Industries', to: '/industries', icon: CircleHelp },
+    { label: 'Services', to: '/services/', icon: BriefcaseBusiness },
+    { label: 'Pricing', to: '/pricing/', icon: CircleDollarSign },
+    { label: 'About', to: '/about/', icon: Info },
+    { label: 'Industries', to: '/industries/', icon: CircleHelp },
+    { label: 'Guides', to: '/resources/guides/', icon: BookOpenText },
   ];
 
   return (
@@ -84,7 +85,7 @@ export function Layout() {
             ))}
           </nav>
           <div className="flex items-center gap-4">
-            <Link to="/contact">
+            <Link to="/contact/">
               <Button variant="default" className="hidden rounded-full md:inline-flex">Talk with Kevin</Button>
             </Link>
             {/* Mobile menu button */}
@@ -170,7 +171,7 @@ export function Layout() {
                     ))}
                     <div className='h-[5vh] grow'></div>
                     <Link
-                      to="/contact"
+                      to="/contact/"
                       onClick={closeMenu}
                       className="mt-4 flex flex-row justify-center text-sm"
                     >
@@ -201,22 +202,24 @@ export function Layout() {
           <div>
             <h4 className="font-serif text-lg text-secondary mb-4">Services</h4>
             <ul className="space-y-2 text-sm text-slate-300">
-              <li><Link to="/services#get-found">Get Found</Link></li>
-              <li><Link to="/services#get-leads">Get Leads</Link></li>
-              <li><Link to="/services#convert">Convert Leads</Link></li>
+              <li><Link to="/services/#web-design">Custom websites</Link></li>
+              <li><Link to="/services/#local-seo">Local search</Link></li>
+              <li><Link to="/services/#get-leads">Lead capture</Link></li>
+              <li><Link to="/services/#convert">Workflow support</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-serif text-lg text-secondary mb-4">Company</h4>
             <ul className="space-y-2 underline text-slate-300">
-              <li><Link to="/about">About Me</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-              <li><Link to="/legal">Terms & Privacy</Link></li>
+              <li><Link to="/about/">About Kevin</Link></li>
+              <li><Link to="/resources/">Resources</Link></li>
+              <li><Link to="/contact/">Contact</Link></li>
+              <li><Link to="/legal/">Terms & Privacy</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-serif text-lg text-secondary mb-4">Want to talk?</h4>
-            <Link to="/contact">
+            <Link to="/contact/">
               <Button variant="accent" className="w-full rounded-full">Say hello to Kevin</Button>
             </Link>
           </div>

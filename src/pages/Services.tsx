@@ -1,30 +1,54 @@
-import { ArrowRight, Bot, Check, Search, Workflow, Wrench } from "lucide-react"
+import { ArrowRight, Bot, Check, Search, Workflow, Wrench, PenTool } from "lucide-react"
 import { Link } from "react-router-dom"
 import { Button } from "../components/ui/button"
 import { Seo } from "../components/Seo"
+import { siteRoutes } from "../seo/site"
 
-const services = [
+const services: {
+  id: string
+  number: string
+  icon: typeof Search
+  title: string
+  description: string
+  examples: string[]
+  tint: string
+  href?: string
+  linkLabel?: string
+}[] = [
   {
-    id: "get-found",
+    id: "web-design",
     number: "01",
-    icon: Search,
-    title: "Small-business websites & local visibility",
-    description: "A custom-built, mobile-friendly website and a clearer local-search presence help nearby customers understand what you do and how to reach you.",
-    examples: ["Custom-built small-business websites", "Local search and Google Business Profile support", "Clear, easy-to-navigate service pages"],
+    icon: PenTool,
+    title: "Custom small-business websites",
+    description: "A clear, mobile-friendly website helps people understand your services, decide if you're a fit, and know how to contact you.",
+    examples: ["Custom website structure and pages", "Mobile-friendly presentation", "Clear contact and quote-request paths"],
     tint: "bg-[#eaf0e8]",
+    href: "/services/web-design/",
+    linkLabel: "Explore custom website design",
+  },
+  {
+    id: "local-seo",
+    number: "02",
+    icon: Search,
+    title: "Local search support",
+    description: "Keep the details people rely on consistent and make it easier for nearby customers to understand what you do and where you work.",
+    examples: ["Local search and Google Business Profile support", "Clear service and service-area information", "Practical, measured next steps"],
+    tint: "bg-[#e8edf0]",
+    href: "/services/seo/",
+    linkLabel: "Explore local SEO support",
   },
   {
     id: "get-leads",
-    number: "02",
+    number: "03",
     icon: ArrowRight,
-    title: "An easier next step",
+    title: "Lead capture that feels simple",
     description: "Thoughtful pages and simple customer journeys, built around how people actually choose and contact a business like yours.",
-    examples: ["Landing pages and contact forms", "Quote requests and booking flows", "Campaigns that point people to the right place"],
+    examples: ["Contact and quote-request forms", "Booking paths where they fit the business", "Clear next steps on important pages"],
     tint: "bg-[#f4eadb]",
   },
   {
     id: "convert",
-    number: "03",
+    number: "04",
     icon: Workflow,
     title: "Systems that keep things moving",
     description: "I can connect the tools you already use—or help choose the right ones—so new inquiries have a clear path and fewer things slip through the cracks.",
@@ -33,7 +57,7 @@ const services = [
   },
   {
     id: "ai-systems",
-    number: "04",
+    number: "05",
     icon: Bot,
     title: "Useful AI, put to work",
     description: "AI can take care of repetitive admin without taking the human out of your business. I'll help identify sensible uses, then build and test a system around your real workflow.",
@@ -46,30 +70,7 @@ export function Services() {
   return (
     <div className="min-h-screen bg-background">
       <Seo
-        title="Small Business Web Design & Local SEO | SlickFunnel"
-        description="Custom small-business websites, local search support, lead capture, and practical automation for Pembroke Pines and nearby South Florida."
-        path="/services"
-        breadcrumbLabel="Services"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          itemListElement: [
-            "Small-business website design",
-            "Local search optimization",
-            "Lead capture and follow-up",
-            "Workflow automation",
-            "Practical AI systems",
-          ].map((name, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            item: {
-              "@type": "Service",
-              name,
-              provider: { "@id": "https://slick.asappy.tech/#organization" },
-              areaServed: ["Pembroke Pines", "South Florida"],
-            },
-          })),
-        }}
+        route={siteRoutes.services}
       />
       <section className="px-4 pb-14 pt-16 md:px-8 md:pb-20 md:pt-24">
         <div className="mx-auto max-w-6xl">
@@ -80,7 +81,7 @@ export function Services() {
               <span className="block italic text-primary">Made to work for you.</span>
             </h1>
             <p className="max-w-xl text-lg leading-8 text-slate-600">
-              I build custom websites and practical online systems for small businesses in Pembroke Pines and nearby South Florida. No generic package dropped on your desk: I learn how your business works, hand-build the right pieces, and stay involved as we make them work in real life.
+              I build custom websites and practical online systems for small businesses, working locally in South Florida and remotely in Eastern Idaho. We start with what your customers need to understand or do, then choose only the pieces that fit.
             </p>
           </div>
         </div>
@@ -88,7 +89,7 @@ export function Services() {
 
       <section className="px-4 pb-20 md:px-8 md:pb-28">
         <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
-          {services.map(({ id, number, icon: Icon, title, description, examples, tint }) => (
+          {services.map(({ id, number, icon: Icon, title, description, examples, tint, href, linkLabel }) => (
             <article id={id} key={id} className="scroll-mt-24 rounded-[1.75rem] border border-[#e9e2d5] bg-white p-7 md:p-9">
               <div className="flex items-center justify-between">
                 <span className={`rounded-2xl p-3 ${tint} text-[#315f4c]`}>
@@ -106,6 +107,15 @@ export function Services() {
                   </li>
                 ))}
               </ul>
+              {href && linkLabel && (
+                <Link
+                  to={href}
+                  className="mt-6 inline-flex items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline"
+                >
+                  {linkLabel}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Link>
+              )}
             </article>
           ))}
         </div>
@@ -135,6 +145,9 @@ export function Services() {
             <Wrench size={19} className="mt-0.5 shrink-0 text-primary" aria-hidden="true" />
             <p><strong className="text-[#1a2e40]">Custom doesn't have to mean complicated.</strong> We'll build only what you need, explain how it works, and keep it manageable for you and your team.</p>
           </div>
+          <p className="mt-6 text-sm leading-6 text-slate-600">
+            The right scope, price, and schedule depend on the work. See the <Link to="/pricing/" className="font-semibold text-primary underline underline-offset-4">published plan details</Link>, then confirm what applies to your project before starting.
+          </p>
         </div>
       </section>
 
@@ -145,7 +158,7 @@ export function Services() {
             <h2 className="mt-4 font-serif text-3xl font-semibold md:text-4xl">We can find the right next step together.</h2>
             <p className="mt-3 text-lg leading-7 text-white/75">Tell me what takes up your time or what you wish worked a little better. I'll listen first.</p>
           </div>
-          <Link to="/contact" className="shrink-0">
+          <Link to="/contact/" className="shrink-0">
             <Button size="lg" variant="accent" className="gap-2 rounded-full px-7">
               Talk with Kevin <ArrowRight size={17} />
             </Button>

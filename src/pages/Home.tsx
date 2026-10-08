@@ -2,58 +2,68 @@ import { ArrowUpRight, ArrowRight, HeartHandshake, MessageCircle, Sprout } from 
 import { Link } from "react-router-dom"
 import { Button } from "../components/ui/button"
 import { Seo } from "../components/Seo"
+import { siteOrigin, siteRoutes } from "../seo/site"
 
 export function Home() {
   return (
     <div className="bg-background">
       <Seo
-        title="Small Business Websites in Pembroke Pines, FL | SlickFunnel"
-        description="Small-business websites and practical online support in Pembroke Pines and nearby South Florida. Meet Kevin at SlickFunnel."
-        path="/"
+        route={siteRoutes.home}
         structuredData={{
           "@context": "https://schema.org",
-          "@type": "Organization",
-          "@id": "https://slick.asappy.tech/#organization",
-          name: "SlickFunnel",
-          alternateName: "Slick Funnel",
-          url: "https://slick.asappy.tech/",
-          logo: "https://slick.asappy.tech/logo.svg",
-          email: "contact@slick.asappy.tech",
-          description: "A hands-on digital partner helping small businesses with websites, local search, lead capture, workflows, and practical AI.",
-          areaServed: [
-            { "@type": "City", name: "Pembroke Pines" },
-            { "@type": "AdministrativeArea", name: "South Florida" },
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": `${siteOrigin}/#organization`,
+              name: "SlickFunnel",
+              alternateName: "Kevin at SlickFunnel",
+              url: `${siteOrigin}/`,
+              logo: `${siteOrigin}/logo.svg`,
+              email: "contact@slick.asappy.tech",
+              description: "Kevin at SlickFunnel provides custom websites, local search support, lead capture, workflow automation, and practical AI help for small businesses.",
+              areaServed: [
+                { "@type": "AdministrativeArea", name: "South Florida" },
+                { "@type": "AdministrativeArea", name: "Eastern Idaho", description: "Remote service" },
+              ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "customer support",
+                email: "contact@slick.asappy.tech",
+                url: `${siteOrigin}${siteRoutes.contact.path}`,
+              },
+            },
+            {
+              "@type": "WebSite",
+              "@id": `${siteOrigin}/#website`,
+              url: `${siteOrigin}/`,
+              name: "SlickFunnel",
+              publisher: { "@id": `${siteOrigin}/#organization` },
+              inLanguage: "en-US",
+            },
           ],
-          contactPoint: {
-            "@type": "ContactPoint",
-            contactType: "customer support",
-            email: "contact@slick.asappy.tech",
-            url: "https://slick.asappy.tech/contact",
-          },
         }}
       />
 
       <section className="relative overflow-hidden px-4 pb-20 pt-14 md:px-8 md:pb-28 md:pt-20">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.03fr_0.97fr] lg:gap-16">
           <div className="relative z-10">
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#d9dfd1] bg-white/70 px-4 py-2 text-sm font-medium text-[#315f4c]">
-              <span className="h-2 w-2 rounded-full bg-primary" />
-              A little less agency. A lot more partnership.
+            <p className="mb-6 inline-flex items-center gap-2 italic px-4 py-2 text-sm font-medium text-[#315f4c]">
+              ~ A little less agency. A lot more partnership.
             </p>
             <h1 className="max-w-2xl font-serif text-5xl font-semibold leading-[1.08] tracking-tight text-navy md:text-7xl">
               Your business is personal.
               <span className="mt-2 block italic text-primary">Your marketing should be, too.</span>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-slate-600 md:text-xl">
-              I'm Kevin. I build small-business websites and work alongside owners in Pembroke Pines and nearby South Florida to make the online side of business feel simpler, more thoughtful, and more like them.
+              I'm Kevin. I build custom websites and provide local search and practical online support for small businesses. I work locally in South Florida and remotely with businesses in Eastern Idaho.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link to="/contact">
+              <Link to="/contact/">
                 <Button size="lg" className="w-full gap-2 rounded-full px-7 sm:w-auto">
                   Have a conversation <ArrowRight size={17} />
                 </Button>
               </Link>
-              <Link to="/about">
+              <Link to="/about/">
                 <Button size="lg" variant="outline" className="w-full rounded-full border-[#b9c8bd] bg-transparent px-7 text-navy hover:bg-white sm:w-auto">
                   Get to know Kevin
                 </Button>
@@ -67,9 +77,12 @@ export function Home() {
             <div className="absolute -bottom-7 -right-5 h-36 w-36 rounded-full bg-navy/50 blur-2xl" />
             <div className="relative rounded-4xl bg-accent/50 p-3 shadow-[0_24px_80px_-35px_rgba(26,46,64,0.4)] md:rotate-1">
               <img
-                src="/kevin-laptop.jpg"
+                src="/images/kevin-laptop.jpg"
                 alt="Kevin working on a laptop"
                 className="aspect-3/4 w-full rounded-[1.55rem] object-cover"
+                width="1200"
+                height="1800"
+                fetchPriority="high"
               />
               <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-white/70 bg-secondary/90 p-4 shadow-lg md:left-8 md:right-8 md:p-5">
                 <div className="flex items-start gap-3">
@@ -106,7 +119,7 @@ export function Home() {
             <p className="mt-5 text-lg leading-8 text-slate-600">
               You need someone who'll understand your business before suggesting what to do next.
             </p>
-            <Link to="/about" className="mt-7 inline-flex items-center gap-2 font-semibold text-primary hover:gap-3">
+            <Link to="/about/" className="mt-7 inline-flex items-center gap-2 font-semibold text-primary hover:gap-3">
               More about how I work <ArrowRight size={17} />
             </Link>
           </div>
@@ -140,9 +153,12 @@ export function Home() {
             ))}
           </div>
           <div className="mt-9 text-center">
-            <Link to="/services" className="inline-flex items-center gap-2 font-semibold text-primary">
+            <Link to="/services/" className="inline-flex items-center gap-2 font-semibold text-primary">
               See the ways I can help <ArrowUpRight size={17} />
             </Link>
+            <p className="mt-4 text-sm text-slate-600">
+              <Link to="/resources/" className="font-semibold text-primary underline underline-offset-4">Browse practical small-business guides</Link>
+            </p>
           </div>
         </div>
       </section>
@@ -154,7 +170,7 @@ export function Home() {
             <h2 className="mt-4 font-mono text-3xl text-white font-semibold leading-tight md:text-5xl">Tell me a little about what you're working on.</h2>
             <p className="mt-4 text-md md:text-lg leading-8 text-white/75">I'll listen, ask a few questions, and we can see if there's a way I can help.</p>
           </div>
-          <Link to="/contact" className="shrink-0">
+          <Link to="/contact/" className="shrink-0">
             <Button size="lg" variant="accent" className="gap-2 rounded-full px-7">
               Say hello to Kevin <ArrowRight size={17} />
             </Button>

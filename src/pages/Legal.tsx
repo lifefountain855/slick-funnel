@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom"
 import { Seo } from "../components/Seo"
+import { siteRoutes } from "../seo/site"
 const legalContent = {
   pageTitle: "Terms of Service & Privacy Policy | SlickFunnel",
   eyebrow: "Legal",
   title: "Terms & Privacy",
   lastUpdatedLabel: "Last updated",
   lastUpdated: "October 8, 2026",
-  draftNotice: "This page is a starting draft for Slick Funnel, not legal advice. Confirm it matches your signed client agreement before relying on it.",
+  draftNotice: "This page is a starting draft for SlickFunnel, not legal advice. Confirm it matches your signed client agreement before relying on it.",
   termsNavLabel: "Terms of Service",
   privacyNavLabel: "Privacy Policy",
   terms: {
     title: "Terms of Service",
-    introduction: "These terms apply to your use of the SlickFunnel website and, where a separate signed proposal or service agreement does not say otherwise, services provided by Slick Funnel (“SlickFunnel,” “we,” “us,” or “our”). By using this website or engaging our services, you agree to these terms. If you do not agree, do not use the website or services.",
+    introduction: "These terms apply to your use of the SlickFunnel website and, where a separate signed proposal or service agreement does not say otherwise, services provided by SlickFunnel (“SlickFunnel,” “we,” “us,” or “our”). By using this website or engaging our services, you agree to these terms. If you do not agree, do not use the website or services.",
     sections: {
       servicesAndScope: {
         title: "Services and project scope",
@@ -69,7 +70,7 @@ const legalContent = {
   },
   privacy: {
     title: "Privacy Policy",
-    introduction: "This policy explains how Slick Funnel collects, uses, and shares information when you visit this website, contact us, or use a SlickFunnel account or service.",
+    introduction: "This policy explains how SlickFunnel collects, uses, and shares information when you visit this website, contact us, or use a SlickFunnel account or service.",
     sections: {
       informationWeCollect: {
         title: "Information we collect",
@@ -120,7 +121,7 @@ const legalContent = {
         ],
         contactLink: {
           label: "Contact us through the contact page.",
-          path: "/contact"
+          path: "/contact/"
         }
       }
     }
@@ -144,11 +145,7 @@ export function Legal() {
   return (
     <div className="min-h-screen bg-slate-50 px-4 py-16 md:px-8 md:py-24">
       <Seo
-        title={legalContent.pageTitle}
-        description="SlickFunnel's terms of service and privacy policy."
-        path="/legal"
-        noIndex
-        breadcrumbLabel="Terms and Privacy"
+        route={siteRoutes.legal}
       />
       <div className="mx-auto max-w-4xl">
         <header className="mb-10">
