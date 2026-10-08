@@ -106,7 +106,7 @@ export function Layout() {
         <AnimatePresence 
           mode="wait" 
           onExitComplete={() => {
-            // Optional: resets scroll position the moment the previous page finishes exiting
+            // Resets scroll position the moment the previous page finishes exiting
             window.scrollTo(0, 0);
           }}
         >
@@ -117,12 +117,6 @@ export function Layout() {
             initial="initial"
             animate="animate"
             exit="exit"
-            onAnimationComplete={(definition) => {
-              // Trigger scroll-to-top once the enter animation ('animate') finishes
-              if (definition === "animate") {
-                window.scrollTo({ top: 0, behavior: "smooth" }); // Use "instant" or "auto" if you don't want smooth scrolling
-              }
-            }}
             className="w-full h-full"
           >
             {outlet && React.cloneElement(outlet, { key: p })}
@@ -216,6 +210,7 @@ export function Layout() {
             <ul className="space-y-2 underline text-slate-300">
               <li><Link to="/about">About Me</Link></li>
               <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/legal">Terms & Privacy</Link></li>
             </ul>
           </div>
           <div>

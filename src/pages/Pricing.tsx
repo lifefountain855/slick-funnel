@@ -86,6 +86,9 @@ export function Pricing() {
             </div>
           ))}
         </div>
+        <p className="mt-8 text-center text-sm leading-6 text-slate-600">
+          Startup has a 3-month minimum commitment. Foundation and Growth are month-to-month. Early cancellation of a service with a stated minimum commitment may incur a fee equal to one month of the agreed recurring price. See our <Link to="/legal#terms" className="font-semibold text-primary underline underline-offset-4">Terms of Service</Link>.
+        </p>
       </div>
     </div>
   )

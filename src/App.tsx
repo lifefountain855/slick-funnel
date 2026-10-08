@@ -6,6 +6,7 @@ import { Pricing } from "./pages/Pricing"
 import { Industries } from "./pages/Industries"
 import { About } from "./pages/About"
 import { Contact } from "./pages/Contact"
+import { Legal } from "./pages/Legal"
 /*import { Audit } from "./pages/Audit"*/
 import NotFound from "./pages/NotFound"
 import { AdminLogin } from "./pages/admin/AdminLogin"
@@ -23,6 +24,7 @@ function App() {
           <Route path="industries" element={<Industries />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="legal" element={<Legal />} />
           <Route path="audit" element={<Contact />} />
           {/*<Route path="audit" element={<Audit />} />*/}
           <Route path="*" element={<NotFound />} />

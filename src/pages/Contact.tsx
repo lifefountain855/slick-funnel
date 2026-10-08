@@ -1,6 +1,7 @@
 import { Label } from "../components/ui/label"
 import { Input } from "../components/ui/input"
 import { Button } from "../components/ui/button"
+import { Link } from "react-router-dom"
 import { supabase } from "../lib/supabase"
 import { contactSchema } from "../lib/validation"
 import { useState } from "react"
@@ -138,6 +139,9 @@ export function Contact() {
               />
             </div>
 
+            <p className="text-xs leading-5 text-slate-500">
+              See our <Link to="/legal#privacy" className="font-medium text-primary underline">Privacy Policy</Link> for how we handle the information you submit.
+            </p>
             <Button type="submit" disabled={isSubmitting} size="lg" className="w-full rounded-full bg-primary hover:bg-primary/90 mt-4">
               {isSubmitting ? "Sending..." : "Send a note to Kevin"}
             </Button>
